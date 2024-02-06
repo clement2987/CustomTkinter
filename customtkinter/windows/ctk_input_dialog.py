@@ -23,6 +23,7 @@ class CTkInputDialog(CTkToplevel):
                  entry_fg_color: Optional[Union[str, Tuple[str, str]]] = None,
                  entry_border_color: Optional[Union[str, Tuple[str, str]]] = None,
                  entry_text_color: Optional[Union[str, Tuple[str, str]]] = None,
+                 show: Optional[str] = None,
 
                  title: str = "CTkDialog",
                  font: Optional[Union[tuple, CTkFont]] = None,
@@ -44,6 +45,7 @@ class CTkInputDialog(CTkToplevel):
         self._title = title
         self._text = text
         self._font = font
+        self._show = show
 
         self.title(self._title)
         self.lift()  # lift window on top
@@ -71,7 +73,8 @@ class CTkInputDialog(CTkToplevel):
                                fg_color=self._entry_fg_color,
                                border_color=self._entry_border_color,
                                text_color=self._entry_text_color,
-                               font=self._font)
+                               font=self._font,
+                               show=self._show)
         self._entry.grid(row=1, column=0, columnspan=2, padx=20, pady=(0, 20), sticky="ew")
 
         self._ok_button = CTkButton(master=self,
